@@ -1,5 +1,6 @@
 
 import { createBrowserRouter } from "react-router-dom";
+import Login from "../views/auth/login/Login";
 
 const router = createBrowserRouter([
   {
@@ -9,6 +10,10 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <div>Test</div>
+  },
+  {
+    path: "login",
+    element: <Login />
   }
 ]);
 
