@@ -7,11 +7,18 @@ import tseslint from 'typescript-eslint'
 export default tseslint.config(
   { ignores: ['dist'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+      js.configs.recommended, 
+      ...tseslint.configs.recommended,
+      'plugin:@typescript-eslint/eslint-recommended'
+    ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+    parserOptions: {
+      parser: '@typescript-eslint/parser',
     },
     plugins: {
       'react-hooks': reactHooks,
@@ -23,6 +30,13 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'linebreak-style': 0,
+      'lines-between-class-members': ['error', 'always', {
+        exceptAfterSingleLine: true,
+      }],
+      'brace-style': ['error', '1tbs'],
+      curly: ['error', 'all'],
+      quotes: ['error', 'single'],
     },
   },
 )
