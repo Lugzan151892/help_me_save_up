@@ -30,6 +30,13 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'linebreak-style': 0,
+      'lines-between-class-members': ['error', 'always', {
+        exceptAfterSingleLine: true,
+      }],
+      'brace-style': ['error', '1tbs'],
+      curly: ['error', 'all'],
+      quotes: ['error', 'single'],
     },
   },
 )
