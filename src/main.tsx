@@ -1,17 +1,10 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.tsx';
 import { Provider } from 'react-redux';
-import './index.css'
-import { createStore } from 'redux';
-import { rootReducer } from './services/reducers';
+import './index.css';
 
-const initialState = {};
-
-const store = createStore(
-  rootReducer,
-  initialState
-)
+import { store } from './store';
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>

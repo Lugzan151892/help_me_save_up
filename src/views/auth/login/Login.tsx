@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux"
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 
 export default function Login() {
-  const user = useSelector(store => store.test.user);
-  const dispatch = useDispatch();
+  const user = useAppSelector(state => state.test.user);
+  const dispatch = useAppDispatch();
 
   const [isUserDefined, setIsUserDefined] = useState(false);
 
   const setUser = () => {
+    // useAppDispatch({ type: 'user' })
     dispatch({ type: 'user' })
     console.log('click');
     console.log(user);
