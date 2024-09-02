@@ -1,27 +1,29 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux"
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
+import { user } from "../../../services/reducers/test";
 
 export default function Login() {
-  const user = useSelector(store => store.test.user);
-  const dispatch = useDispatch();
+	const userName = useAppSelector((state) => state.test.user);
+	const dispatch = useAppDispatch();
 
-  const [isUserDefined, setIsUserDefined] = useState(false);
+	const [isUserDefined, setIsUserDefined] = useState(false);
 
-  const setUser = () => {
-    dispatch({ type: 'user' })
-    console.log('click');
-    console.log(user);
-  }
+	const setUser = () => {
+		// useAppDispatch({ type: 'user' })
+		dispatch(user());
+		console.log("click");
+		console.log(userName);
+	};
 
-  useEffect(() => {
-    user ? setIsUserDefined(true): setIsUserDefined(false)
-  }, [user])
+	useEffect(() => {
+		setIsUserDefined(!!userName);
+	}, [userName]);
 
-  return (
-    <>
-      <div> tut login, a tut user = {!user ? 'null' : user}</div>
-      <button onClick={setUser}> test</button>
-      <div>a tut testim watch effect {isUserDefined ? 'true' : 'false'}</div>
-    </>
-  )
+	return (
+		<>
+			<div> tut login, a tut user = {!userName ? "null" : userName}</div>
+			<button onClick={setUser}> test</button>
+			<div>a tut testim watch effect {isUserDefined ? "true" : "false"}</div>
+		</>
+	);
 }
